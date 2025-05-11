@@ -784,16 +784,16 @@ const RentalCalculator = () => {
           {activeTab === 'results' && calculatedProducts.length > 0 && (
             <div>
               <div className="mb-6 flex justify-between items-center">
-                <h3 className="text-xl font-bold text-purple-300">
-                  렌탈 계산 결과 ({selectedPeriod}개월)
+                <h3 className="text-lg md:text-xl font-bold text-purple-300 whitespace-nowrap">
+                  렌탈 결과({selectedPeriod}개월)
                 </h3>
                 
-                <div className="flex items-center space-x-4">
-                  <span className="px-3 py-1 bg-purple-900/30 text-purple-300 text-sm rounded-full">
-                    선택된 할인율: {discountRates[selectedPeriod]}%
+                <div className="flex items-center">
+                  <span className="text-xs md:text-sm bg-purple-900/30 text-purple-300 px-2 py-1 rounded-full">
+                    할인율:{discountRates[selectedPeriod]}%
                   </span>
-                  <span className="px-3 py-1 bg-indigo-900/30 text-indigo-300 text-sm rounded-full">
-                    총 {calculatedProducts.length}개 제품
+                  <span className="ml-2 text-xs md:text-sm bg-indigo-900/30 text-indigo-300 px-2 py-1 rounded-full">
+                    {calculatedProducts.length}개
                   </span>
                 </div>
               </div>
@@ -803,29 +803,29 @@ const RentalCalculator = () => {
                   <table className="min-w-full divide-y divide-gray-700">
                     <thead className="bg-gray-900">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">제품명</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">모델명</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">일시불 단가</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">총 렌탈료</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">월 렌탈료</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">월 렌탈료(최종)</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">최종 렌탈료</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">렌탈사 수익</th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">공급물대</th>
+                        <th className="px-2 py-2 md:px-6 md:py-3 text-left text-xs font-medium text-gray-400 uppercase">제품명</th>
+                        <th className="px-2 py-2 md:px-6 md:py-3 text-left text-xs font-medium text-gray-400 uppercase">모델명</th>
+                        <th className="px-2 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-400 uppercase">일시불 단가</th>
+                        <th className="px-2 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-400 uppercase">총 렌탈료</th>
+                        <th className="px-2 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-400 uppercase">월 렌탈료</th>
+                        <th className="px-2 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-400 uppercase">월 렌탈료(최종)</th>
+                        <th className="px-2 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-400 uppercase">최종 렌탈료</th>
+                        <th className="px-2 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-400 uppercase">렌탈사 수익</th>
+                        <th className="px-2 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-400 uppercase">공급물대</th>
                       </tr>
                     </thead>
                     <tbody className="bg-gray-800 divide-y divide-gray-700">
                       {calculatedProducts.map((product, index) => (
                         <tr key={index} className={index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-750'}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">{product.productName}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{product.modelName}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 text-right">{product.price.toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 text-right">{Math.round(product.totalRentalFee).toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 text-right">{product.monthlyRentalFee.toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-purple-300 text-right">{product.finalMonthlyRentalFee.toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-300 text-right">{product.finalTotalRentalFee.toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-pink-300 text-right">{Math.round(product.rentalCompanyProfit).toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-amber-300 text-right">{Math.round(product.supplyValue).toLocaleString()}원</td>
+                          <td className="px-2 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-100">{product.productName}</td>
+                          <td className="px-2 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-300">{product.modelName}</td>
+                          <td className="px-2 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-300 text-right">{product.price.toLocaleString()}원</td>
+                          <td className="px-2 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-300 text-right">{Math.round(product.totalRentalFee).toLocaleString()}원</td>
+                          <td className="px-2 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-300 text-right">{product.monthlyRentalFee.toLocaleString()}원</td>
+                          <td className="px-2 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-purple-300 text-right">{product.finalMonthlyRentalFee.toLocaleString()}원</td>
+                          <td className="px-2 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-indigo-300 text-right">{product.finalTotalRentalFee.toLocaleString()}원</td>
+                          <td className="px-2 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-pink-300 text-right">{Math.round(product.rentalCompanyProfit).toLocaleString()}원</td>
+                          <td className="px-2 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-amber-300 text-right">{Math.round(product.supplyValue).toLocaleString()}원</td>
                         </tr>
                       ))}
                     </tbody>
@@ -841,7 +841,7 @@ const RentalCalculator = () => {
                   <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                   </svg>
-                  계산 설정으로 돌아가기
+                  뒤로가기
                 </button>
                 
                 <div className="flex space-x-3">
@@ -852,7 +852,7 @@ const RentalCalculator = () => {
                     <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                     </svg>
-                    계산 결과 리셋
+                    리셋
                   </button>
                   
                   <button 
@@ -877,7 +877,7 @@ const RentalCalculator = () => {
                     <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                     </svg>
-                    결과 내보내기 (Excel)
+                    엑셀다운
                   </button>
                 </div>
               </div>
