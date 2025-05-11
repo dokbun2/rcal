@@ -491,7 +491,7 @@ const RentalCalculator = () => {
         <div className="p-1 bg-gradient-to-r from-purple-500 to-indigo-600"></div>
         
         <div className="p-6">
-          <h1 className="text-3xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">
+          <h1 className="text-3xl font-bold mb-6 text-center text-white">
             렌탈료 계산기(참고용)
           </h1>
           
@@ -544,48 +544,6 @@ const RentalCalculator = () => {
           {activeTab === 'upload' && (
             <div className="mb-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* 파일 업로드 */}
-                <div className="border border-gray-700 rounded-xl p-6 bg-gray-800/50">
-                  <h3 className="text-lg font-medium mb-4 text-purple-300">엑셀/CSV 파일 업로드</h3>
-                  <div 
-                    className={`flex flex-col items-center justify-center p-8 border-2 ${isDragging ? 'border-purple-500 bg-purple-900/20' : 'border-dashed border-gray-600 bg-gray-800'} rounded-xl cursor-pointer transition-all duration-300 hover:border-purple-400 hover:bg-gray-700/50`}
-                    onDragOver={handleDragOver}
-                    onDragLeave={handleDragLeave}
-                    onDrop={handleDrop}
-                    onClick={() => {
-                      const fileInput = document.getElementById('file-upload');
-                      if (fileInput) {
-                        fileInput.click();
-                      }
-                    }}
-                  >
-                    <h3 className="text-xl font-medium mb-2 text-gray-300">파일을 드래그하거나 클릭하여 업로드</h3>
-                    <p className="text-sm text-gray-400 text-center mb-4">
-                      제품명, 모델명, 일시불 단가가 포함된 엑셀 또는 CSV 파일을 업로드하세요
-                    </p>
-                    
-                    <input 
-                      id="file-upload"
-                      type="file" 
-                      className="hidden" 
-                      accept=".xlsx,.xls,.csv" 
-                      onChange={handleFileUpload} 
-                    />
-                  </div>
-                  
-                  <div className="mt-4 flex justify-center space-x-4">
-                    <button
-                      className={buttonStyles.special}
-                      onClick={downloadSampleTemplate}
-                    >
-                      <svg className="w-4 h-4 mr-2 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                      </svg>
-                      샘플 양식 다운로드
-                    </button>
-                  </div>
-                </div>
-                
                 {/* 단일 상품 입력 */}
                 <div className="border border-gray-700 rounded-xl p-6 bg-gray-800/50">
                   <h3 className="text-lg font-medium mb-4 text-purple-300">단일 상품 입력</h3>
@@ -631,6 +589,48 @@ const RentalCalculator = () => {
                         상품 추가
                       </button>
                     </div>
+                  </div>
+                </div>
+                
+                {/* 파일 업로드 */}
+                <div className="border border-gray-700 rounded-xl p-6 bg-gray-800/50">
+                  <h3 className="text-lg font-medium mb-4 text-purple-300">엑셀/CSV 파일 업로드</h3>
+                  <div 
+                    className={`flex flex-col items-center justify-center p-8 border-2 ${isDragging ? 'border-purple-500 bg-purple-900/20' : 'border-dashed border-gray-600 bg-gray-800'} rounded-xl cursor-pointer transition-all duration-300 hover:border-purple-400 hover:bg-gray-700/50`}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                    onClick={() => {
+                      const fileInput = document.getElementById('file-upload');
+                      if (fileInput) {
+                        fileInput.click();
+                      }
+                    }}
+                  >
+                    <h3 className="text-xl font-medium mb-2 text-gray-300">파일을 드래그하거나 클릭하여 업로드</h3>
+                    <p className="text-sm text-gray-400 text-center mb-4">
+                      제품명, 모델명, 일시불 단가가 포함된 엑셀 또는 CSV 파일을 업로드하세요
+                    </p>
+                    
+                    <input 
+                      id="file-upload"
+                      type="file" 
+                      className="hidden" 
+                      accept=".xlsx,.xls,.csv" 
+                      onChange={handleFileUpload} 
+                    />
+                  </div>
+                  
+                  <div className="mt-4 flex justify-center space-x-4">
+                    <button
+                      className={buttonStyles.special}
+                      onClick={downloadSampleTemplate}
+                    >
+                      <svg className="w-4 h-4 mr-2 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                      </svg>
+                      샘플 양식 다운로드
+                    </button>
                   </div>
                 </div>
               </div>
@@ -805,13 +805,13 @@ const RentalCalculator = () => {
                       <tr>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">제품명</th>
                         <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">모델명</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">일시불 단가</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">총 렌탈료</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">월 렌탈료</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">월 렌탈료(최종)</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">최종 렌탈료</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">렌탈사 수익</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase">공급물대</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">일시불 단가</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">총 렌탈료</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">월 렌탈료</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">월 렌탈료(최종)</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">최종 렌탈료</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">렌탈사 수익</th>
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-400 uppercase">공급물대</th>
                       </tr>
                     </thead>
                     <tbody className="bg-gray-800 divide-y divide-gray-700">
@@ -819,13 +819,13 @@ const RentalCalculator = () => {
                         <tr key={index} className={index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-750'}>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100">{product.productName}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{product.modelName}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{product.price.toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{Math.round(product.totalRentalFee).toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{product.monthlyRentalFee.toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-purple-300">{product.finalMonthlyRentalFee.toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-300">{product.finalTotalRentalFee.toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-pink-300">{Math.round(product.rentalCompanyProfit).toLocaleString()}원</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-amber-300">{Math.round(product.supplyValue).toLocaleString()}원</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 text-right">{product.price.toLocaleString()}원</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 text-right">{Math.round(product.totalRentalFee).toLocaleString()}원</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 text-right">{product.monthlyRentalFee.toLocaleString()}원</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-purple-300 text-right">{product.finalMonthlyRentalFee.toLocaleString()}원</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-300 text-right">{product.finalTotalRentalFee.toLocaleString()}원</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-pink-300 text-right">{Math.round(product.rentalCompanyProfit).toLocaleString()}원</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-amber-300 text-right">{Math.round(product.supplyValue).toLocaleString()}원</td>
                         </tr>
                       ))}
                     </tbody>
