@@ -349,7 +349,7 @@ const RentalCalculator: React.FC = () => {
         
         <div className="p-6">
           <h1 className="text-3xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-            렌탈료 계산기
+            레이션 계산기
           </h1>
           
           {/* 탭 네비게이션 */}

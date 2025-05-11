@@ -278,15 +278,20 @@ const RentalCalculator: React.FC = () => {
       });
       
       setCalculatedProducts(calculated);
-      if(calculated.length > 0 && activeTab !== 'results') {
-        setActiveTab('results');
-      }
     } catch (err) {
       setError('계산 중 오류가 발생했습니다: ' + (err as Error).message);
     }
   };
   
-  // 공급단가율이나 할인률, 선택된 기간이 변경될 때마다 자동 계산
+  // 사용자가 계산하기 버튼을 클릭했을 때 실행하는 함수
+  const handleCalculateClick = () => {
+    calculateRental();
+    if (calculatedProducts.length > 0) {
+      setActiveTab('results');
+    }
+  };
+  
+  // 공급단가율이나 할인률, 선택된 기간이 변경될 때마다 자동 계산만 하고 탭은 변경하지 않음
   useEffect(() => {
     if (fileUploaded && products.length > 0) {
       calculateRental();
@@ -603,7 +608,7 @@ const RentalCalculator: React.FC = () => {
               <div className="flex justify-center">
                 <button 
                   className="px-6 py-3 bg-gradient-to-r from-indigo-500 to-blue-600 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex items-center"
-                  onClick={calculateRental}
+                  onClick={handleCalculateClick}
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m-3-3v6m3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
