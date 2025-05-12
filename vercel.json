@@ -1,8 +1,26 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+    {
+      "src": "/static/(.*)",
+      "headers": { "cache-control": "s-maxage=31536000, immutable" },
+      "dest": "/static/$1"
+    },
+    { "src": "/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "/logo192.png", "dest": "/logo192.png" },
+    { "src": "/logo512.png", "dest": "/logo512.png" },
+    { "src": "/manifest.json", "dest": "/manifest.json" },
+    { "src": "/robots.txt", "dest": "/robots.txt" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ],
   "headers": [
     {
@@ -10,7 +28,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src * 'self' data: 'unsafe-inline' 'unsafe-eval';"
+          "value": "default-src * 'self' rcal.dokbun2.com fonts.googleapis.com fonts.gstatic.com data:; font-src * 'self' data: fonts.gstatic.com; style-src * 'self' 'unsafe-inline' fonts.googleapis.com; script-src * 'self' 'unsafe-inline' 'unsafe-eval'; img-src * 'self' data:; connect-src * 'self';"
         },
         {
           "key": "X-Content-Type-Options",
