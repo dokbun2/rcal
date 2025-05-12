@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.ba500ea7.css",
-    "main.js": "/static/js/main.fee927d6.js",
-    "static/media/Paperlogy-9Black.woff2": "/static/media/Paperlogy-9Black.7ca98af8e24125c812f5.woff2",
-    "static/media/Paperlogy-7Bold.woff2": "/static/media/Paperlogy-7Bold.f2078aa764c9e97a3dea.woff2",
-    "static/media/Paperlogy-6SemiBold.woff2": "/static/media/Paperlogy-6SemiBold.51b29b8e66d2e54a8f6a.woff2",
-    "static/media/Paperlogy-5Medium.woff2": "/static/media/Paperlogy-5Medium.27c8888683972254f3f6.woff2",
-    "static/media/Paperlogy-4Regular.woff2": "/static/media/Paperlogy-4Regular.2671472d512512d8c303.woff2",
-    "static/media/Paperlogy-3Light.woff2": "/static/media/Paperlogy-3Light.cc67bd666c3604988c7f.woff2",
-    "static/media/Paperlogy-1Thin.woff2": "/static/media/Paperlogy-1Thin.fa00aacdaeb8c895a100.woff2",
-    "static/media/Paperlogy-8ExtraBold.woff2": "/static/media/Paperlogy-8ExtraBold.afc463e7e90653cc520f.woff2",
-    "static/media/Paperlogy-2ExtraLight.woff2": "/static/media/Paperlogy-2ExtraLight.cdc3db0f1c3fa71df968.woff2",
-    "index.html": "/index.html",
-    "main.ba500ea7.css.map": "/static/css/main.ba500ea7.css.map",
-    "main.fee927d6.js.map": "/static/js/main.fee927d6.js.map"
+    "main.css": "./static/css/main.64971fc8.css",
+    "main.js": "./static/js/main.fee927d6.js",
+    "static/media/Paperlogy-9Black.woff2": "./static/media/Paperlogy-9Black.7ca98af8e24125c812f5.woff2",
+    "static/media/Paperlogy-7Bold.woff2": "./static/media/Paperlogy-7Bold.f2078aa764c9e97a3dea.woff2",
+    "static/media/Paperlogy-6SemiBold.woff2": "./static/media/Paperlogy-6SemiBold.51b29b8e66d2e54a8f6a.woff2",
+    "static/media/Paperlogy-5Medium.woff2": "./static/media/Paperlogy-5Medium.27c8888683972254f3f6.woff2",
+    "static/media/Paperlogy-4Regular.woff2": "./static/media/Paperlogy-4Regular.2671472d512512d8c303.woff2",
+    "static/media/Paperlogy-3Light.woff2": "./static/media/Paperlogy-3Light.cc67bd666c3604988c7f.woff2",
+    "static/media/Paperlogy-1Thin.woff2": "./static/media/Paperlogy-1Thin.fa00aacdaeb8c895a100.woff2",
+    "static/media/Paperlogy-8ExtraBold.woff2": "./static/media/Paperlogy-8ExtraBold.afc463e7e90653cc520f.woff2",
+    "static/media/Paperlogy-2ExtraLight.woff2": "./static/media/Paperlogy-2ExtraLight.cdc3db0f1c3fa71df968.woff2",
+    "index.html": "./index.html",
+    "main.64971fc8.css.map": "./static/css/main.64971fc8.css.map",
+    "main.fee927d6.js.map": "./static/js/main.fee927d6.js.map"
   },
   "entrypoints": [
-    "static/css/main.ba500ea7.css",
+    "static/css/main.64971fc8.css",
     "static/js/main.fee927d6.js"
   ]
 }
