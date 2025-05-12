@@ -2,9 +2,10 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* 폰트 경로 수정 */
 @font-face {
   font-family: 'Paperlogy';
-  src: url('https://rcal.dokbun2.com/fonts/Paperlogy-4Regular.woff2') format('woff2');
+  src: url('/fonts/Paperlogy-4Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -12,7 +13,7 @@
 
 @font-face {
   font-family: 'Paperlogy';
-  src: url('https://rcal.dokbun2.com/fonts/Paperlogy-7Bold.woff2') format('woff2');
+  src: url('/fonts/Paperlogy-7Bold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
