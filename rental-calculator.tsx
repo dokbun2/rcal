@@ -710,12 +710,12 @@ const RentalCalculator: React.FC = () => {
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">제품명</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">모델명</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">일시불 단가</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">공급단가</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">총 렌탈료</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">월 렌탈료</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">제품명</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">모델명</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">일시불 단가</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">공급단가</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">총 렌탈료</th>
+                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">월 렌탈료</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
@@ -731,25 +731,6 @@ const RentalCalculator: React.FC = () => {
                       ))}
                     </tbody>
                   </table>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-                  <h4 className="text-sm font-medium text-gray-500 mb-1">선택된 렌탈 기간</h4>
-                  <p className="text-2xl font-bold text-gray-800">{selectedPeriod} 개월</p>
-                </div>
-                <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-                  <h4 className="text-sm font-medium text-gray-500 mb-1">평균 렌탈 총액</h4>
-                  <p className="text-2xl font-bold text-gray-800">
-                    {(calculatedProducts.reduce((sum, product) => sum + (product.totalRentalFee || 0), 0) / calculatedProducts.length).toLocaleString()}원
-                  </p>
-                </div>
-                <div className="bg-white p-4 rounded-xl shadow-md border border-gray-100">
-                  <h4 className="text-sm font-medium text-gray-500 mb-1">평균 월 렌탈료</h4>
-                  <p className="text-2xl font-bold text-blue-600">
-                    {(calculatedProducts.reduce((sum, product) => sum + (product.monthlyRentalFee || 0), 0) / calculatedProducts.length).toLocaleString()}원
-                  </p>
                 </div>
               </div>
               
