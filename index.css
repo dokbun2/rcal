@@ -2,26 +2,10 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* 폰트 경로 수정 */
-@font-face {
-  font-family: 'Paperlogy';
-  src: url('/fonts/Paperlogy-4Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Paperlogy';
-  src: url('/fonts/Paperlogy-7Bold.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* 시스템 폰트 위주로 수정하고 Poppins 폰트 사용 */
 body {
   margin: 0;
-  font-family: 'Poppins', 'Paperlogy', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
