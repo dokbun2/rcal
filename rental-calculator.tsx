@@ -631,25 +631,41 @@ const RentalCalculator: React.FC = () => {
               
               {/* 할인률 설정 */}
               <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 mb-8 transition-all duration-200 hover:shadow-lg">
-                <div 
-                  className="flex justify-between items-center cursor-pointer"
-                  onClick={() => setIsDiscountRateOpen(!isDiscountRateOpen)}
-                >
+                <div className="flex justify-between items-center">
                   <h3 className="text-lg font-medium mb-0 text-gray-800 flex items-center">
                     <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     할인률 설정
                   </h3>
-                  <svg 
-                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isDiscountRateOpen ? 'transform rotate-180' : ''}`} 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
+                  <button 
+                    className="px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg flex items-center transition-all duration-200"
+                    onClick={() => setIsDiscountRateOpen(!isDiscountRateOpen)}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
+                    {isDiscountRateOpen ? '닫기' : '설정하기'}
+                    <svg 
+                      className={`w-4 h-4 ml-1 transition-transform duration-200 ${isDiscountRateOpen ? 'transform rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
                 </div>
+                
+                {!isDiscountRateOpen && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                    {rentalPeriods.map(period => (
+                      <div key={period} className="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium text-gray-700">{period}개월</span>
+                          <span className="font-medium text-blue-700">{discountRates[period]}%</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 
                 {isDiscountRateOpen && (
                   <>
@@ -695,25 +711,41 @@ const RentalCalculator: React.FC = () => {
               
               {/* 렌탈수수료율 설정 */}
               <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 mb-8 transition-all duration-200 hover:shadow-lg">
-                <div 
-                  className="flex justify-between items-center cursor-pointer"
-                  onClick={() => setIsRentalFeeRateOpen(!isRentalFeeRateOpen)}
-                >
+                <div className="flex justify-between items-center">
                   <h3 className="text-lg font-medium mb-0 text-gray-800 flex items-center">
                     <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     렌탈수수료율 설정
                   </h3>
-                  <svg 
-                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isRentalFeeRateOpen ? 'transform rotate-180' : ''}`} 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
+                  <button 
+                    className="px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg flex items-center transition-all duration-200"
+                    onClick={() => setIsRentalFeeRateOpen(!isRentalFeeRateOpen)}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
+                    {isRentalFeeRateOpen ? '닫기' : '설정하기'}
+                    <svg 
+                      className={`w-4 h-4 ml-1 transition-transform duration-200 ${isRentalFeeRateOpen ? 'transform rotate-180' : ''}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
                 </div>
+                
+                {!isRentalFeeRateOpen && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                    {rentalPeriods.map(period => (
+                      <div key={period} className="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                        <div className="flex justify-between items-center">
+                          <span className="font-medium text-gray-700">{period}개월</span>
+                          <span className="font-medium text-blue-700">{rentalFeeRates[period]}%</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 
                 {isRentalFeeRateOpen && (
                   <>
@@ -857,8 +889,8 @@ const RentalCalculator: React.FC = () => {
             </div>
           )}
         </div>
-                        </div>
-                      </div>
+      </div>
+    </div>
   );
 };
 
