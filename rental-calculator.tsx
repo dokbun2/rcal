@@ -52,7 +52,6 @@ const RentalCalculator: React.FC = () => {
   const [isSupplyRateOpen, setIsSupplyRateOpen] = useState<boolean>(false);
   const [isDiscountRateOpen, setIsDiscountRateOpen] = useState<boolean>(false);
   const [isRentalFeeRateOpen, setIsRentalFeeRateOpen] = useState<boolean>(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   // 공급단가율 변경 핸들러
   const handleSupplyRateChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -98,15 +97,6 @@ const RentalCalculator: React.FC = () => {
   // 렌탈 기간 선택 핸들러
   const handlePeriodChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedPeriod(parseInt(e.target.value, 10));
-  };
-
-  // 드롭다운 토글 핸들러
-  const toggleDropdown = (dropdown: string) => {
-    if (activeDropdown === dropdown) {
-      setActiveDropdown(null);
-    } else {
-      setActiveDropdown(dropdown);
-    }
   };
 
   // 파일 업로드 핸들러
@@ -562,11 +552,11 @@ const RentalCalculator: React.FC = () => {
                   <div className="relative">
                     <div 
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 cursor-pointer flex justify-between items-center"
-                      onClick={() => toggleDropdown('supplyRate')}
+                      onClick={() => setIsSupplyRateOpen(!isSupplyRateOpen)}
                     >
                       <span>{supplyRatePercent}%</span>
                       <svg 
-                        className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${activeDropdown === 'supplyRate' ? 'transform rotate-180' : ''}`} 
+                        className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isSupplyRateOpen ? 'transform rotate-180' : ''}`} 
                         fill="none" 
                         stroke="currentColor" 
                         viewBox="0 0 24 24"
@@ -575,7 +565,7 @@ const RentalCalculator: React.FC = () => {
                       </svg>
                     </div>
                     
-                    {activeDropdown === 'supplyRate' && (
+                    {isSupplyRateOpen && (
                       <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg">
                         {[65, 70, 75, 80, 85, 90, 95].map(rate => (
                           <div 
@@ -583,7 +573,7 @@ const RentalCalculator: React.FC = () => {
                             className={`px-4 py-2 cursor-pointer hover:bg-blue-50 ${supplyRatePercent === rate ? 'bg-blue-100 font-medium' : ''}`}
                             onClick={() => {
                               handleSupplyRateSelect(rate);
-                              toggleDropdown('supplyRate');
+                              setIsSupplyRateOpen(false);
                             }}
                           >
                             {rate}%
@@ -643,7 +633,7 @@ const RentalCalculator: React.FC = () => {
               <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 mb-8 transition-all duration-200 hover:shadow-lg">
                 <div 
                   className="flex justify-between items-center cursor-pointer"
-                  onClick={() => toggleDropdown('discountRate')}
+                  onClick={() => setIsDiscountRateOpen(!isDiscountRateOpen)}
                 >
                   <h3 className="text-lg font-medium mb-0 text-gray-800 flex items-center">
                     <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -652,7 +642,7 @@ const RentalCalculator: React.FC = () => {
                     할인률 설정
                   </h3>
                   <svg 
-                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${activeDropdown === 'discountRate' ? 'transform rotate-180' : ''}`} 
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isDiscountRateOpen ? 'transform rotate-180' : ''}`} 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -661,7 +651,7 @@ const RentalCalculator: React.FC = () => {
                   </svg>
                 </div>
                 
-                {activeDropdown === 'discountRate' && (
+                {isDiscountRateOpen && (
                   <>
                     <p className="text-sm text-gray-600 my-4">
                       각 렌탈 기간별로 일시불 단가에 곱해지는 할인률입니다. 총렌탈료 = 일시불 단가 × 할인률
@@ -707,7 +697,7 @@ const RentalCalculator: React.FC = () => {
               <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 mb-8 transition-all duration-200 hover:shadow-lg">
                 <div 
                   className="flex justify-between items-center cursor-pointer"
-                  onClick={() => toggleDropdown('rentalFeeRate')}
+                  onClick={() => setIsRentalFeeRateOpen(!isRentalFeeRateOpen)}
                 >
                   <h3 className="text-lg font-medium mb-0 text-gray-800 flex items-center">
                     <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -716,7 +706,7 @@ const RentalCalculator: React.FC = () => {
                     렌탈수수료율 설정
                   </h3>
                   <svg 
-                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${activeDropdown === 'rentalFeeRate' ? 'transform rotate-180' : ''}`} 
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${isRentalFeeRateOpen ? 'transform rotate-180' : ''}`} 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -725,7 +715,7 @@ const RentalCalculator: React.FC = () => {
                   </svg>
                 </div>
                 
-                {activeDropdown === 'rentalFeeRate' && (
+                {isRentalFeeRateOpen && (
                   <>
                     <p className="text-sm text-gray-600 my-4">
                       각 렌탈 기간별 렌탈수수료율입니다.
