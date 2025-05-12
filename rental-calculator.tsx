@@ -677,33 +677,23 @@ const RentalCalculator: React.FC = () => {
                         <div key={period} className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                           <div className="flex justify-between items-center mb-2">
                             <span className="font-medium text-gray-700">{period}개월</span>
-                            <span className={`px-2 py-1 rounded-full text-xs ${selectedPeriod === period ? 'bg-blue-100 text-blue-700' : 'bg-gray-200 text-gray-700'}`}>
-                              {selectedPeriod === period ? '선택됨' : ''}
-                            </span>
+                            <span className={`px-2 py-1 rounded-full text-xs ${selectedPeriod === period ? 'bg-blue-100 text-blue-700' : 'bg-gray-200 text-gray-700'}`}>{selectedPeriod === period ? '선택됨' : ''}</span>
                           </div>
                           <div className="relative">
-                            <div className="flex">
-                              <select
-                                className={`w-full px-3 py-2 border rounded-lg appearance-none transition-all duration-200 ${selectedPeriod === period ? 'border-blue-300 focus:ring-2 focus:ring-blue-500' : 'border-gray-300'}`}
-                                value={discountRates[period]}
-                                onChange={(e) => handleDiscountRateSelect(period, parseFloat(e.target.value))}
-                              >
-                                {[100, 102, 105, 106, 110, 111, 115, 116, 120].map(rate => (
-                                  <option key={rate} value={rate}>{rate}%</option>
-                                ))}
-                              </select>
-                              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                              </div>
+                            <input
+                              type="number"
+                              min="1"
+                              step="0.1"
+                              value={discountRates[period]}
+                              onChange={(e) => handleDiscountRateChange(period, e)}
+                              className={`w-full px-3 py-2 border rounded-lg transition-all duration-200 ${selectedPeriod === period ? 'border-blue-300 focus:ring-2 focus:ring-blue-500' : 'border-gray-300'}`}
+                            />
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                              <span className="text-gray-500">%</span>
                             </div>
                           </div>
                         </div>
                       ))}
-                    </div>
-                    <div className="mt-4 text-sm text-gray-500 italic">
-                      * 직접 입력을 원하시면 값을 선택한 후 수정하세요
                     </div>
                   </>
                 )}
@@ -757,33 +747,23 @@ const RentalCalculator: React.FC = () => {
                         <div key={period} className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                           <div className="flex justify-between items-center mb-2">
                             <span className="font-medium text-gray-700">{period}개월</span>
-                            <span className={`px-2 py-1 rounded-full text-xs ${selectedPeriod === period ? 'bg-blue-100 text-blue-700' : 'bg-gray-200 text-gray-700'}`}>
-                              {selectedPeriod === period ? '선택됨' : ''}
-                            </span>
+                            <span className={`px-2 py-1 rounded-full text-xs ${selectedPeriod === period ? 'bg-blue-100 text-blue-700' : 'bg-gray-200 text-gray-700'}`}>{selectedPeriod === period ? '선택됨' : ''}</span>
                           </div>
                           <div className="relative">
-                            <div className="flex">
-                              <select
-                                className={`w-full px-3 py-2 border rounded-lg appearance-none transition-all duration-200 ${selectedPeriod === period ? 'border-blue-300 focus:ring-2 focus:ring-blue-500' : 'border-gray-300'}`}
-                                value={rentalFeeRates[period]}
-                                onChange={(e) => handleRentalFeeRateSelect(period, parseFloat(e.target.value))}
-                              >
-                                {[15, 18, 20, 21, 22, 24, 25, 26, 28, 30, 31, 32, 35].map(rate => (
-                                  <option key={rate} value={rate}>{rate}%</option>
-                                ))}
-                              </select>
-                              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                              </div>
+                            <input
+                              type="number"
+                              min="0"
+                              step="0.1"
+                              value={rentalFeeRates[period]}
+                              onChange={(e) => handleRentalFeeRateSelect(period, parseFloat(e.target.value))}
+                              className={`w-full px-3 py-2 border rounded-lg transition-all duration-200 ${selectedPeriod === period ? 'border-blue-300 focus:ring-2 focus:ring-blue-500' : 'border-gray-300'}`}
+                            />
+                            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                              <span className="text-gray-500">%</span>
                             </div>
                           </div>
                         </div>
                       ))}
-                    </div>
-                    <div className="mt-4 text-sm text-gray-500 italic">
-                      * 직접 입력을 원하시면 값을 선택한 후 수정하세요
                     </div>
                   </>
                 )}
