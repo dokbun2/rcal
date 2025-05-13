@@ -160,20 +160,20 @@ const RentalCalculator: React.FC = () => {
               if (typeof data === 'string') {
                 // base64 인코딩된 문자열
                 workbook = XLSX.read(data, { type: 'binary', cellDates: true });
-          } else {
+              } else {
                 // ArrayBuffer
                 const arrayBuffer = data as ArrayBuffer;
                 workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array', cellDates: true });
               }
               
-            const sheetName = workbook.SheetNames[0];
+              const sheetName = workbook.SheetNames[0];
               if (!sheetName) {
                 reject(new Error('엑셀 파일에 시트가 없습니다.'));
                 return;
               }
               
-            const worksheet = workbook.Sheets[sheetName];
-            parsedData = XLSX.utils.sheet_to_json(worksheet);
+              const worksheet = workbook.Sheets[sheetName];
+              parsedData = XLSX.utils.sheet_to_json(worksheet);
               
               // 콘솔에 파일 구조 출력 (디버깅용)
               console.log('파싱된 데이터 구조:', parsedData[0]);
@@ -191,7 +191,7 @@ const RentalCalculator: React.FC = () => {
           }
           
           // 필드 이름 매핑을 위한 함수
-          const findField = (obj: any, possibleNames: string[]): string | undefined => {
+          const findField = (obj: any, possibleNames: readonly string[]): string | undefined => {
             for (const name of possibleNames) {
               // 정확히 일치하는 필드 찾기
               if (obj[name] !== undefined) {
@@ -213,13 +213,13 @@ const RentalCalculator: React.FC = () => {
           const firstRow = parsedData[0];
           
           // 제품명 필드 찾기
-          const productNameField = findField(firstRow, ['제품명', '제 품 명', '제품', '품명', 'productName', 'product', 'name'] as string[]);
+          const productNameField = findField(firstRow, ['제품명', '제 품 명', '제품', '품명', 'productName', 'product', 'name'] as const);
           
           // 모델명 필드 찾기
-          const modelNameField = findField(firstRow, ['모델명', '모 델 명', '모델', 'modelName', 'model'] as string[]);
+          const modelNameField = findField(firstRow, ['모델명', '모 델 명', '모델', 'modelName', 'model'] as const);
           
           // 가격 필드 찾기
-          const priceField = findField(firstRow, ['일시불단가', '일시불 단가', '단가', '가격', '일시불', 'price'] as string[]);
+          const priceField = findField(firstRow, ['일시불단가', '일시불 단가', '단가', '가격', '일시불', 'price'] as const);
           
           console.log('필드 매핑:', { productNameField, modelNameField, priceField });
           
@@ -253,10 +253,11 @@ const RentalCalculator: React.FC = () => {
       };
       
       try {
-      if (file.name.endsWith('.csv')) {
-        reader.readAsText(file);
-      } else {
-        reader.readAsArrayBuffer(file);
+        if (file.name.endsWith('.csv')) {
+          reader.readAsText(file);
+        } else {
+          // 엑셀 파일은 ArrayBuffer로 읽기
+          reader.readAsArrayBuffer(file);
         }
       } catch (readError) {
         console.error('파일 읽기 시도 오류:', readError);
